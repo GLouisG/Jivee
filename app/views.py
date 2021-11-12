@@ -23,6 +23,12 @@ class UserApi(APIView):
         return Response(serializers.data)       
 
 class MusicApi(APIView):
+  #for spotify
     def get(self, request, format=None):
 
-        return Response({"songs":[{"song1":"music"},{"song2":"music"}]})   
+        return Response({"songs":[{"song1":"music"},{"song2":"music"}]}) #dummy response
+class MusicApi2(APIView):
+  #for 2nd service
+    def get(self, request, format=None):
+
+        return Response({"songs":[{"song1":"music"},{"song2":"music"}]}) #dummy response          
