@@ -22,7 +22,7 @@ class UserApi(APIView):
         serializers = ProfileSerializer(users, many=True)
         return Response(serializers.data)       
 
-class MusicApi(APIView):
+class MusicApi1(APIView):
   #for spotify
     def get(self, request, format=None):
 
