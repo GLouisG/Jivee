@@ -7,10 +7,10 @@ from django.db.models.signals import post_save
 # Create your models here.
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
-  pic = models.ImageField(upload_to = 'hood/', default='profpic.png')
+  pic = models.ImageField(upload_to = 'hood/', default='profpic.jpg')
   description = models.TextField(default='Welcome')
-  credentials1 = models.TextField()
-  credentials2 = models.TextField() 
+  credentials1 = models.TextField(blank=True)
+  credentials2 = models.TextField(blank=True) 
   current_playlist = models.CharField(max_length=250, blank=True)
   
   def __str__(self):
