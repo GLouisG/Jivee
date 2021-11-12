@@ -21,3 +21,8 @@ class UserApi(APIView):
         users = User.objects.all()
         serializers = ProfileSerializer(users, many=True)
         return Response(serializers.data)       
+
+class MusicApi(APIView):
+    def get(self, request, format=None):
+
+        return Response({"songs":[{"song1":"music"},{"song2":"music"}]})   
