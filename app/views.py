@@ -7,6 +7,8 @@ from sklearn import preprocessing
 from sklearn.neighbors import KNeighborsClassifier                       
 import numpy as np 
 from app.serializer import *
+import requests
+import json
 from django.contrib.auth.models import User
 # Create your views here.
 
@@ -24,11 +26,18 @@ class UserApi(APIView):
 
 class MusicApi1(APIView):
   #for spotify
-    def get(self, request, format=None):
+    def get(self, request, *args, **kwargs):
+        query = kwargs.get('params', None)
+        response = requests.get('https://agrofake.herokuapp.com/api/ai/'+query)
+        json_without_slash = response.json()
 
-        return Response({"songs":[{"song1":"music"},{"song2":"music"}]}) #dummy response
+        return Response(json_without_slash) 
+
 class MusicApi2(APIView):
   #for 2nd service
-    def get(self, request, format=None):
+    def get(self, request, *args, **kwargs):
+        query = kwargs.get('params', None)
+        response = requests.get('your site'+query)
+        json_without_slash = response.json()
 
-        return Response({"songs":[{"song1":"music"},{"song2":"music"}]}) #dummy response          
+        return Response(json_without_slash)    
