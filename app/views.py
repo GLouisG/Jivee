@@ -36,8 +36,12 @@ class MusicApi1(APIView):
 class MusicApi2(APIView):
   #for 2nd service
     def get(self, request, *args, **kwargs):
-        query = kwargs.get('params', None)
-        response = requests.get('your site'+query)
+        musician = kwargs.get('musician', None)
+        songname  = kwargs.get("songname", None)
+        response = requests.get('https://deezerapi123.herokuapp.com/api/ai/' +musician+ "/"+songname)
         json_without_slash = response.json()
 
         return Response(json_without_slash)    
+
+
+
