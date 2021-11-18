@@ -183,7 +183,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
  
 #Cors
 CORS_ALLOWED_ORIGINS = [
-   'http://localhost:4200/home',
+   'http://localhost:4200/home/',
 ]
 django_heroku.settings(locals())
 
