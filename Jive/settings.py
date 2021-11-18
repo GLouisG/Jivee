@@ -182,8 +182,11 @@ api_secret=config('CL_API_SECRET')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
  
 #Cors
-CORS_ALLOWED_ORIGINS = [
-   'http://localhost:4200/home/',
-]
+# CORS_ALLOWED_ORIGINS = [
+#    'http://localhost:4200/home/',
+
+# ]
+CORS_ORIGIN_ALLOW_ALL = True
 django_heroku.settings(locals())
+
 
