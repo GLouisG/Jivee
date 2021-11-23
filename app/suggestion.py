@@ -19,12 +19,12 @@ def suggester(query):
   spoty_features = pd.read_pickle('spoty_features.pickle')
 
   #######
-  client_id = config("CLIENT_ID")
-  client_secret= config("CLIENT_SECRET")
+  # client_id = config("CLIENT_ID")
+  # client_secret= config("CLIENT_SECRET")
 
   #######
 
-  auth_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
+  auth_manager = SpotifyClientCredentials(client_id="4c1e304bc5ba4fb780d3ce00a68a55fd", client_secret='ecbafc776986435cb6800d6f05edf576')
   sp = spotipy.Spotify(auth_manager=auth_manager)
   playlist_dic = {}
   playlist_cover_art = {}
