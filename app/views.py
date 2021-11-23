@@ -9,7 +9,9 @@ import numpy as np
 from app.serializer import *
 import requests
 import json
-from django.contrib.auth.models import User
+from . import suggestion
+import json
+import codecs
 # Create your views here.
 
 # class ProfileApi(APIView):
@@ -24,14 +26,31 @@ from django.contrib.auth.models import User
 #         serializers = ProfileSerializer(users, many=True)
 #         return Response(serializers.data)       
 
+# class MusicApi1(APIView):
+#   #for spotify
+#     def get(self, request, *args, **kwargs):
+#         query = kwargs.get('params', None)
+#         response = requests.get('https://agrofake.herokuapp.com/api/ai/'+query)
+#         json_without_slash = response.json()
+
+#         return Response(json_without_slash) 
+
 class MusicApi1(APIView):
   #for spotify
     def get(self, request, *args, **kwargs):
-        query = kwargs.get('params', None)
-        response = requests.get('https://agrofake.herokuapp.com/api/ai/'+query)
-        json_without_slash = response.json()
+        query = self.kwargs.get('params', None)
+        query = query.replace("%20", " ")
+        res = suggestion.suggester(query)
+        resp = "[{'track_name':'Sorry', 'artist_name':'We were unable to find your playlist on spotify, ensure it exists and is public', 'url':'https://static.wikia.nocookie.net/g-idle/images/6/6c/Uh-Oh_%28Album_Cover%29.jpg/revision/latest?cb=20190626170027', 'genre':'Try again'}]"
 
-        return Response(json_without_slash) 
+
+        resp = json.dumps(resp)
+        resp = json.loads(resp)
+        print(res)
+        if "Error" in res:
+            return Response({'songs': resp})
+        else:
+            return Response({'songs':res}) 
 
 class MusicApi2(APIView):
   #for 2nd service
