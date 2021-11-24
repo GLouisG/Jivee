@@ -41,10 +41,10 @@ class MusicApi1(APIView):
         query = self.kwargs.get('params', None)
         query = query.replace("%20", " ")
         res = suggestion.suggester(query)
-        resp = "[{'track_name':'Sorry', 'artist_name':'We were unable to find your playlist on spotify, ensure it exists and is public', 'url':'https://static.wikia.nocookie.net/g-idle/images/6/6c/Uh-Oh_%28Album_Cover%29.jpg/revision/latest?cb=20190626170027', 'genre':'Try again'}]"
+        # resp = "[{'track_name':'Sorry', 'artist_name':'We were unable to find your playlist on spotify, ensure it exists and is public', 'url':'https://static.wikia.nocookie.net/g-idle/images/6/6c/Uh-Oh_%28Album_Cover%29.jpg/revision/latest?cb=20190626170027', 'genre':'Try again'}]"
+        resp='[{"track_name":"Sorry", "artist_name":"We were unable to find your playlist on spotify, ensure it exists and is public", "url":"https://static.wikia.nocookie.net/g-idle/images/6/6c/ Uh-Oh $28Album Cover%29.jpg/revision/latest?cb=20190626170027", "genre":"Try again"}]'
 
 
-        resp = json.dumps(resp)
         resp = json.loads(resp)
         print(res)
         if "Error" in res:

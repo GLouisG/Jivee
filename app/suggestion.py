@@ -29,7 +29,9 @@ def suggester(query):
   playlist_dic = {}
   playlist_cover_art = {}
   results = sp.search(q=query, type='playlist')
+
   resultss = results["playlists"]["items"]
+
   for i in resultss:
       playlist_dic[i['name']] = i['uri'].split(':')[2]
       playlist_cover_art[i['uri'].split(':')[2]] = i['images'][0]['url']
@@ -92,9 +94,10 @@ def suggester(query):
       return playlist_feature_set_weighted_final.sum(axis = 0), spotify_features_nonplaylist
 
   ######
-
-  playlist_vector, nonplaylist_df = generate_playlist_vector(spoty_features, playlist_df, 1.2)
-
+  try:
+    playlist_vector, nonplaylist_df = generate_playlist_vector(spoty_features, playlist_df, 1.2)
+  except:
+    return "Error"
 
   ######
 
