@@ -7,5 +7,5 @@ urlpatterns=[
 #  url(r'^api/users$', views.UserApi.as_view(),name = "apiusers" ),
 #  url(r'^api/profiles/$', views.ProfileApi.as_view(),name = "apiprofiles" ),
  path("api/ai/<str:params>", views.MusicApi1.as_view(), name="spotifysuggest"),   
- path("api/deezerai/<str:musician>/<str:songname>", views.MusicApi2.as_view(), name="deezersuggest"),  
+ path("api/deezerai/<str:musician>/<str:songname>", views.DeezerRecommendation.as_view(), name="deezersuggest"),  
 ]

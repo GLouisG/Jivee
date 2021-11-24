@@ -52,7 +52,7 @@ class MusicApi1(APIView):
         else:
             return Response({'songs':res}) 
 
-class MusicApi2(APIView):
+class DeezerRecommendation(APIView):
   #for 2nd service
     def get(self, request, *args, **kwargs):
         musician = kwargs.get('musician', None)
