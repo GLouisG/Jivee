@@ -92,9 +92,10 @@ def suggester(query):
       return playlist_feature_set_weighted_final.sum(axis = 0), spotify_features_nonplaylist
 
   ######
-
-  playlist_vector, nonplaylist_df = generate_playlist_vector(spoty_features, playlist_df, 1.2)
-
+  try:
+   playlist_vector, nonplaylist_df = generate_playlist_vector(spoty_features, playlist_df, 1.2)
+  except:
+    return "Error"
 
   ######
 
